@@ -24,7 +24,7 @@ imageInput.addEventListener('change', () => {
 });
 
 tileButton.addEventListener('click', () => {
-  const tileCount = prompt('How many tiles would you like to use?');
+  const tileCount = prompt('How many rows x columns would you like to use?');
   const tileWidth = originalImage.width / tileCount;
   const tileHeight = originalImage.height / tileCount;
   tiledCanvas.width = tileWidth * tileCount;
