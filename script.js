@@ -1,5 +1,6 @@
 const imageInput = document.getElementById('imageInput');
 const tileButton = document.getElementById('tileButton');
+const saveButton = document.getElementById('saveButton');
 const originalCanvas = document.getElementById('originalCanvas');
 const tiledCanvas = document.getElementById('tiledCanvas');
 const originalContext = originalCanvas.getContext('2d');
@@ -23,7 +24,7 @@ imageInput.addEventListener('change', () => {
 });
 
 tileButton.addEventListener('click', () => {
-  const tileCount = prompt('How many rows x columns would you like to use?');
+  const tileCount = prompt('How many tiles would you like to use?');
   const tileWidth = originalImage.width / tileCount;
   const tileHeight = originalImage.height / tileCount;
   tiledCanvas.width = tileWidth * tileCount;
@@ -34,3 +35,14 @@ tileButton.addEventListener('click', () => {
     }
   }
 });
+
+saveButton.addEventListener('click', () => {
+  const dataURL = tiledCanvas.toDataURL();
+  const link = document.createElement('a');
+  link.download = 'tiled-image.png';
+  link.href = dataURL;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+});
+
